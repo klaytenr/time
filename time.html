@@ -1,0 +1,42 @@
+<script>
+    function time(hour, minute, period){
+        if(hour>12){
+            console.log("That's not a real time");
+            return "That's not a real time"
+        }
+        var m ="";
+        var p =0;
+        if(period=="am" || period=="AM" || period=="a.m."){
+            p=-1;
+        }else if(period=="pm" || period=="PM" || period=="p.m."){
+            p=1;
+        }
+
+        if(hour==11 && minute>30){
+             p*=-1
+        }
+
+        if(p==1){
+            var time=" in the evening";
+        }else if(p==-1){
+            var time=" in the morning";
+        }
+
+        if(minute>30 && minute<60 && hour==12){
+            hour=0;
+        }
+
+        if(minute>30 && minute<60){
+            m="It's almost ";
+            hour++;
+        }else if(minute<30 && minute>=0){
+            m="It's just after ";
+        }else if(minute==30){
+            m="It's half past ";
+        }
+
+        console.log(m + hour + time);
+    }
+
+    time(4,30,"am");
+</script>
